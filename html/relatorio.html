@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <link rel="stylesheet" href="../css/style_relatorio.css">
+</head>
+<body onload="verificarLogin()">
+    <!-- NAVBAR PRINCIPAL -->
+    <nav class="navbar">
+        <!-- Logo RSA que redireciona -->
+        <div class="navbar-logo"><a href="paginaslide.html">RSA</a></div>
 
+        <!-- Links centrais da navbar -->
+        <div class="navbar-center">
+            <ul class="navbar-links">
+                <li><a href="horas.html">Horas</a></li>
+                <li><a href="relatorio.html">Relatórios</a></li>
+                <li><a href="certificados.html">Certificados</a></li>
+                <li><a href="palestras.html">Palestras</a></li>
+            </ul>
+        </div>
+
+        <!-- Perfil com menu suspenso -->
+        <div class="user-profile">
+            <div class="avatar-container" onclick="toggleProfileMenu()">
+                <img src="../img/logos/eu.jpeg" alt="Foto do perfil" class="avatar-image">
+            </div>
+
+            <!-- Menu de perfil oculto -->
+            <div class="profile-dropdown" id="profileDropdown">
+                <div class="profile-header">
+                    <img src="../img/logos/eu.jpeg" alt="Foto do perfil" class="dropdown-avatar">
+                    <div class="profile-info">
+                        <div class="profile-name">Sergio</div>
+                        <div class="profile-email">sergiofbandeira@gmail.com</div>
+                    </div>
+                </div>
+
+                <div class="dropdown-divider"></div>
+
+                <!-- Botão de logout -->
+                <a href="#" class="dropdown-item" onclick="logout()">
+                    <button class="dropdown-icon logout-btn">🔒</button> Sair
+                </a>
+
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-support">
+                    <label>📞 Suporte</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão hamburguer para dispositivos móveis -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <!-- Menu mobile que aparece ao clicar no hamburguer -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="horas.html">Horas</a>
+            <a href="relatorio.html">Relatórios</a>
+            <a href="certificados.html">Certificados</a>
+            <a href="palestras.html">Palestras</a>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO DA TABELA -->
+    <div class="container-tabela">
+        <!-- Tabela inicialmente oculta -->
+        <div class="tabela-wrapper oculta">
+            <table class="tabela-estilosa">
+                <thead>
+                    <tr>
+                        <th>📅 Data</th>
+                        <th>📌 Atividade</th>
+                        <th>❌ Apagar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Conteúdo será preenchido via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- BOTÕES DE AÇÃO -->
+    <div class="botoes-container" style="text-align: center; margin-top: 20px;">
+        <input type="file" id="arquivoInput" style="display: none;">
+        <button onclick="document.getElementById('arquivoInput').click()">Anexar Arquivos</button>
+        <button id="enviarRelatoriosBtn" style="margin-left: 10px;">Enviar Relatórios</button>
+    </div>
+    <script src="../js/relatorio.js"></script>
