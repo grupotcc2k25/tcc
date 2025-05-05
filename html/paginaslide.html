@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Slider HTML & CSS | CodingNepal</title>
+    <!-- Linking Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../css/style_slide.css" />
+  </head>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('active');
+    }
+  </script>
+  
+
+  <body>
+    <nav class="navbar">
+      <div class="navbar-logo">RSA</div>
+    
+      <div class="navbar-center">
+        <ul class="navbar-links">
+          <li><a href="horas.html">Horas</a></li>
+          <li><a href="#">Relatórios</a></li>
+          <li><a href="#">Certificados</a></li>
+          <li><a href="#">Palestras</a></li>
+        </ul>
+      </div>
+    
+      <!-- Botão menu hambúrguer -->
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    
+      <!-- Menu responsivo escondido por padrão -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#">Início</a>
+        <a href="#">Notícias</a>
+        <a href="#">Eventos</a>
+        <a href="#">Contato</a>
+      </div>
+    </nav>
+    <div class="container swiper">
+      <div class="wrapper">
+        <div class="card-list swiper-wrapper">
+          <!-- Single Card -->
+          <div class="card swiper-slide">
+            <div class="card-image">
+              <img src="../img/imgfatec/cpsayrton.jpeg" alt="Design Trends" />
+              
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Gestores do Centro Paula Souza visitam sede do Instituto Ayrton Senna</h3>
+              <p class="card-text">ONG mantém parceria com CPS voltada ao desenvolvimento socioemocional dos estudantes, com formação de educadores e avaliações contínuas para auxiliar decisões</p>
+           
+              <div class="card-footer">
+                
+                <a href="https://www.cps.sp.gov.br/gestores-do-centro-paula-souza-visitam-sede-do-instituto-ayrton-senna/" target="_blank" class="card-button" target="_blank">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
+          <!-- Single Card -->
+          <div class="card swiper-slide">
+            <div class="card-image">
+              <img src="../img/imgfatec/feirasdeinstitutos.jpg" alt="Development" />
+             
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Programa de Estágio do CPS disponibiliza mais de 1,4 mil vagas</h3>
+              <p class="card-text">Estudantes de Ensino Médio, Técnico e Superior de diversas áreas podem atuar em Etecs, Fatecs ou na Administração Central da instituição; inscrições até 2 de setembro.</p>
+
+                
+              <div class="card-footer">
+
+                <a href="https://www.cps.sp.gov.br/programa-de-estagio-do-cps-disponibiliza-mais-de-14-mil-vagas/#:~:text=Ao%20todo%2C%20est%C3%A3o%20dispon%C3%ADveis%20mais,%2Dse%20ao%20meio%2Ddia." target="_blank" class="card-button">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
+          <!-- Single Card -->
+          <div class="card swiper-slide">
+            <div class="card-image">
+              <img src="../img/imgfatec/FOTO-NOVOS-DESTIVOS-INTERCAMBIO.jpeg"  />
+      
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Intercâmbio Cultural do CPS ganha três novos destinos nesta edição</h3>
+              <p class="card-text">Entre as cidades disponíveis nos Estados Unidos, Boston se junta a Chicago e Nova Iorque; na Inglaterra, Liverpool e Manchester são as novidades na lista de nove municípios</p>
+
+              
+              <div class="card-footer">
+                
+                <a href="https://www.cps.sp.gov.br/intercambio-cultural-do-cps-ganha-tres-novos-destinos-nesta-edicao/" target="_blank" class="card-button">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
+          <!-- Single Card -->
+          <div class="card swiper-slide">
+            <div class="card-image">
+              <img src="../img/imgfatec/gamerscom-fatec-taquaritinga.jpg"  />
+           
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">CPS levará estudantes e professores de SP para maior evento de game e tecnologia do mundo</h3>
+              <p class="card-text">Etecs e Fatecs contarão com 1,5 mil ingressos gratuitos para participar do evento, que ocorre entre os dias 1º e 4 de maio, na capital</p>
+              <div class="card-footer">
+              
+                <a href="https://www.cps.sp.gov.br/cps-levara-estudantes-e-professores-para-gamescom-latam-2025/" target="_blank" class="card-button">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
+          <!-- Single Card -->
+          <div class="card swiper-slide">
+            <div class="card-image">
+              <img src="../img/imgfatec/inscriçoes.jpg" alt="Animation" />
+      
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Inova CPS abre inscrições para 20ª edição da Escola de Inovadoress</h3>
+              <p class="card-text">Inova CPS abre inscrições para 20ª edição da Escola de Inovadores O Centro Paula Souza (CPS)...</p>
+              <div class="card-footer">
+               
+              
+                <a href="https://fatecpg.cps.sp.gov.br/inova-cps-abre-inscricoes-para-20a-edicao-da-escola-de-inovadores/" target="_blank" class="card-button">Saiba Mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigation Buttons -->
+        <div class="swiper-slide-button swiper-button-prev"></div>
+        <div class="swiper-slide-button swiper-button-next"></div>
+      </div>
+    </div>
+    <!-- Linking Swiper script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Custom Script -->
+    <script src="../js/slide.js"></script>
+  </body>
+</html>
