@@ -1,110 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>horas</title>
-  <link rel="stylesheet" href="../css/style_horas.css">
-</head>
-<body>
-  <nav class="navbar">
-    <div class="navbar-logo"><a href="paginaslide.html">RSA</a></div>
-  
-    <div class="navbar-center">
-      <ul class="navbar-links">
-        <li><a href="horas.html">Horas</a></li>
-        <li><a href="relatorio.html">Relatórios</a></li>
-        <li><a href="certificados.html">Certificados</a></li>
-        <li><a href="palestras.html">Palestras</a></li>
-      </ul>
-    </div>
-  
-      <div class="user-profile">
-  <div class="avatar-container" onclick="toggleProfileMenu()">
-    <img src="../img/logos/eu.jpeg" alt="Foto do perfil" class="avatar-image">
-  </div>
-  
-  <div class="profile-dropdown" id="profileDropdown">
-    <div class="profile-header">
-      <img src="../img/logos/eu.jpeg" alt="Foto do perfil" class="dropdown-avatar">
-      <div class="profile-info">
-        <div class="profile-name">Sergio</div>
-        <div class="profile-email">sergiofbandeira@gmail.com</div>
-      </div>
-    </div>
-    
-    <div class="dropdown-divider"></div>
-    
-    <a href="index.html" class="dropdown-item" id="logout-button">
-      <button class="dropdown-icon logout-btn">
-        🔒
-      </button>
-      Sair
-    </a>
+/* Reset básico para remover margens e paddings padrões, definir box-sizing e fonte padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
 
-    <div class="dropdown-divider"></div>
-<div class="dropdown-support">
-<label>📞 Suporte</label>
+/* Estilo geral do corpo da página */
+body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e); /* Fundo com gradiente escuro */
+    color: #fff; /* Cor do texto */
+    min-height: 100vh; /* Altura mínima de 100% da tela */
+    display: flex; /* Centraliza o conteúdo */
+    justify-content: center;
+    align-items: center;
+}
 
-</div>
-  </div>
-</div>
-    
-    <!-- Botão menu hambúrguer -->
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  
-    <!-- Menu responsivo -->
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="horas.html">Horas</a>
-      <a href="relatorio.html">Relatórios</a>
-      <a href="certificados.html">Certificados</a>
-      <a href="palestras.html">Palestras</a>
-    </div>
-  </nav>
-  </div>
-</div>
+/* Container principal que engloba a imagem e o login */
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px; /* Espaço entre imagem e login */
+    padding: 40px;
+    width: 100%;
+}
 
+/* Estilo do container de login */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo semi-transparente */
+    border: 1px solid #2d2d4d; /* Borda levemente visível */
+    border-radius: 12px; /* Bordas arredondadas */
+    padding: 30px;
+    width: 100%;
+    max-width: 400px; /* Largura máxima */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra ao redor */
+    backdrop-filter: blur(6px); /* Efeito de desfoque no fundo */
+    text-align: center;
+}
 
-<div class="container-tabela">
-  <div class="tabela-wrapper">
-    <table class="tabela-estilosa">
-      <thead>
-        <tr>
-          <th>📅 Data</th>
-          <th>📌 Atividade</th>
-          <th>⏱️ Duração</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Data">10/04/2025</td>
-          <td data-label="Atividade">Reunião com equipe</td>
-          <td data-label="Duração">2h</td>
-        </tr>
-        
-        <tr>
-          <td data-label="Data">11/04/2025</td>
-          <td data-label="Atividade">Desenvolvimento do projeto</td>
-          <td data-label="Duração">3h</td>
-        </tr>
-    
-          <td data-label="Data">10/04/2025</td>
-          <td data-label="Atividade">Reunião com equipe</td>
-          <td data-label="Duração">2h</td>
-        </tr>
-        <tr>
-          <td data-label="Data">10/04/2025</td>
-          <td data-label="Atividade">Reunião com equipe</td>
-          <td data-label="Duração">2h</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+/* Título do login */
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #fff;
+}
 
+/* Grupo dos campos de entrada (input) */
+.input-group {
+    display: flex;
+    align-items: center;
+    background-color: #111427;
+    border: 1px solid #2f2f52;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
 
-  
+/* Ícone dentro do input */
+.input-group i {
+    margin-right: 10px;
+    color: #a259ff; /* Cor roxa */
+}
 
-  <script src="../js/paginahoras.js"></script>
-</body>
-</html>
+/* Campo de entrada em si */
+.input-group input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    flex: 1;
+    color: #fff;
+}
+
+/* Placeholder (texto dentro do input antes de digitar) */
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+/* Container das opções de perfil (Aluno, Coordenação, Empresa) */
+.profile-selector {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+/* Cada opção de perfil */
+.profile-option {
+    flex: 1;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #111427;
+    color: #ccc;
+    transition: all 0.3s ease; /* Animação suave */
+}
+
+/* Esconde os botões radio */
+.profile-option input {
+    display: none;
+}
+
+/* Estilo da opção de perfil selecionada */
+.profile-option.selected {
+    border: 1px solid #a259ff;
+    background-color: #1f1f3a;
+    color: #fff;
+}
+
+/* Botão de login */
+.login-btn {
+    background: linear-gradient(135deg, #a259ff, #6d28d9); /* Gradiente roxo */
+    border: none;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+.login-btn:hover {
+    box-shadow: 0 0 12px rgba(162, 89, 255, 0.4);
+    transform: translateY(-2px); /* Eleva levemente o botão */
+}
+
+/* Container da opção "Lembrar-me" */
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+/* Ajusta o espaçamento entre checkbox e texto */
+.options input {
+    margin-right: 5px;
+}
+
+/* Ícone do olho para exibir/ocultar a senha */
+.toggle-password {
+    cursor: pointer;
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+/* Cor do olho ao passar o mouse */
+.toggle-password:hover {
+    color: #a259ff;
+}
+
+/* Estilo da imagem lateral */
+.side-image {
+    max-width: 30vw;
+    height: 50vh;
+    border-radius: 12px;
+    display: block;
+    margin-right: 400px; /* Afasta a imagem do login */
+    margin-top: 10%;
+}
+
+/* Responsividade para telas menores que 768px */
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column; /* Empilha os elementos */
+        gap: 40px;
+        padding: 20px;
+    }
+
+    .side-image {
+        display: none; /* Oculta a imagem */
+        margin-right: 0;
+    }
+
+    .login-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+/* Responsividade adicional para telas menores que 500px */
+@media (max-width: 500px) {
+    .login-container {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .profile-selector {
+        flex-direction: column; /* Empilha as opções de perfil */
+    }
+}
