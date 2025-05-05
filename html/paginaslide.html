@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Card Slider HTML & CSS | CodingNepal</title>
+    <title>Noticias</title>
     <!-- Linking Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../css/style_slide.css" />
@@ -20,28 +20,62 @@
 
   <body>
     <nav class="navbar">
-      <div class="navbar-logo">RSA</div>
+      <div class="navbar-logo"> <a href="paginaslide.html">RSA</a></div>
     
       <div class="navbar-center">
         <ul class="navbar-links">
           <li><a href="horas.html">Horas</a></li>
-          <li><a href="#">Relatórios</a></li>
-          <li><a href="#">Certificados</a></li>
-          <li><a href="#">Palestras</a></li>
+          <li><a href="relatorio.html">Relatórios</a></li>
+          <li><a href="certificados.html">Certificados</a></li>
+          <li><a href="palestras.html">Palestras</a></li>
         </ul>
       </div>
+    
+        <div class="user-profile">
+    <div class="avatar-container" onclick="toggleProfileMenu()">
+      <img src="../img/logos/eu.jpeg" alt="Foto do perfil" class="avatar-image">
+    </div>
+    
+    <div class="profile-dropdown" id="profileDropdown">
+      <div class="profile-header">
+        <img src="../img/logos/eu.jpeg" alt="Foto do perfil" class="dropdown-avatar">
+        <div class="profile-info">
+          <div class="profile-name">Sergio</div>
+          <div class="profile-email">sergiofbandeira@gmail.com</div>
+        </div>
+      </div>
+      
+      <div class="dropdown-divider"></div>
+      
+      <a href="index.html" class="dropdown-item" id="logout-button">
+        <button class="dropdown-icon logout-btn">
+          🔒
+        </button>
+        Sair
+      </a>
+      <div class="dropdown-divider"></div>
+<div class="dropdown-support">
+  <label>📞 Suporte</label>
+</div>
+
+      
+     
+    </div>
+  </div>
+      
     
       <!-- Botão menu hambúrguer -->
       <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     
-      <!-- Menu responsivo escondido por padrão -->
+      <!-- Menu responsivo -->
       <div class="mobile-menu" id="mobileMenu">
-        <a href="#">Início</a>
-        <a href="#">Notícias</a>
-        <a href="#">Eventos</a>
-        <a href="#">Contato</a>
+        <a href="horas.html">Horas</a>
+        <a href="relatorio.html">Relatórios</a>
+        <a href="certificados.html">Certificados</a>
+        <a href="palestras.html">Palestras</a>
       </div>
     </nav>
+    
     <div class="container swiper">
       <div class="wrapper">
         <div class="card-list swiper-wrapper">
