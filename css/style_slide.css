@@ -143,10 +143,15 @@ body {
 }
 
 /* Estilos para o logo da navbar */
-.navbar-logo {
-  font-size: 1.5rem; /* Tamanho da fonte */
-  font-weight: 700; /* Peso da fonte */
-  color: #ffffff; /* Cor do texto */
+.navbar-logo a{
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+}
+.navbar-logo a:hover{
+
+  color:#4e3785;
 }
 
 /* Estilos para a parte central da navbar */
@@ -280,4 +285,159 @@ body {
 .swiper-button-prev,
 .swiper-button-next {
   display: block; /* Exibe os botões do swiper */
+}
+/* Estilos para o dropdown de perfil */
+.user-profile {
+  position: relative;
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 280px;
+  background: rgb(35, 8, 85);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  z-index: 1000;
+  border: 1px solid #e0e0e0;
+}
+
+.profile-dropdown.active {
+  display: block;
+}
+
+.profile-info {
+  padding: 10px 8px;
+}
+
+.profile-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.profile-email {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 8px 0;
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+  background: #4e3785;
+}
+
+.dropdown-icon {
+  margin-right: 12px;
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+/* Melhorias para o user-card */
+.user-card {
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.user-card:hover {
+  background: #f5f5f5;
+}
+
+/* Estilos para o avatar */
+.avatar-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.avatar-container:hover {
+  transform: scale(1.05);
+  border-color: #4285f4;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilos para o avatar no dropdown */
+.profile-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.dropdown-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  border: 2px solid #f1f1f1;
+}
+
+/* Ajuste no posicionamento do dropdown */
+.profile-dropdown {
+  right: -10px;
+  margin-top: 10px;
+}
+
+/* Animação suave */
+.profile-dropdown {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.logout-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 8px;
+}
+.logout-btn:hover {
+  color: #a259ff;
+}
+.dropdown-support {
+  padding: 8px 24px;
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.8;
+}
+.dropdown-support label {
+  cursor: pointer;
+}
+.dropdown-support:hover{
+ color: #a259ff;
 }
