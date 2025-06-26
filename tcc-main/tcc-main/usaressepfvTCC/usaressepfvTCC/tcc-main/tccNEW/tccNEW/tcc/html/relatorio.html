@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificação do Aluno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: center; /* Centraliza os itens */
+            gap: 20px; /* Adiciona espaçamento entre os itens */
+            background-color: #121212;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: auto; /* A navbar ocupa somente o espaço necessário */
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        .card {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 250px;
+            margin-top: -2%;
+            margin-bottom: 20px; /* Espaço entre o card e a tabela */
+            margin-left: -85%;
+        }
+
+        .info-left {
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .table-container {
+            width: 100%;
+            max-width: 600px;
+            max-height: 300px;
+            overflow-y: auto;
+           
+            border-radius: 10px;
+            background-color: #1e1e1e;
+            padding: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: -12%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background-color: #333;
+        }
+
+        .total-row {
+            font-weight: bold;
+        }
+
+        #total-container {
+            margin-top: 10px;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Estilo do botão de logout */
+        .logout-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #121212;
+            color: white;
+            border-bottom:2px solid gray;
+            
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .logout-button:hover {
+            background-color: gray;
+        }
+        .upload-btn {
+            background-color: #444;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            margin-top: 10%;
+        }
+
+        .upload-btn:hover {
+            background-color: #666;
+            transform: scale(0.9);
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                max-width: 280px;
+            }
+            .table-container {
+                width: 90%;
+                max-width: 500px;
+            }
+            img {
+                width: 120px;
+                height: 120px;
+            }
+            th, td {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 15px;
+                width: 100%;
+            }
+            .table-container {
+                width: 95%;
+                max-width: 400px;
+            }
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+        .remove-btn {
+    background-color: #a00;
+    color: white;
+    padding: 4px 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 80px;
+    text-align: center;
+}
+#viewer-container {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 80%;
+            background: white;
+            color: black;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        #viewer-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .remove-btn:hover {
+            background-color: #d00;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="file-input" accept=".docx" style="display: none;">
+
+    <!-- Botão para voltar à página de login -->
+    <button class="logout-button" onclick="window.location.href='index.html';">Sair</button>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="pagina1.html">Horarios</a>
+        <a href="pagina2docs.html">Documentos</a>
+        <a href="pagina3palestras.html">Palestras</a>
+    </div>
+
+    <div class="card">
+        <h3>Identificação do Aluno</h3>
+        <img id="profile-pic" src="img/eu.jpeg" alt="Foto do Aluno">
+        <input type="file" id="upload" style="display: none;">
+        <div class="info-left">
+            <p><strong>RM:</strong> 25719</p>
+            <p><strong>Nome:</strong> Sérgio Frazon Bandeira da Silva</p>
+            <p><strong>Turma:</strong> Turma B</p>
+            <p><strong>Série:</strong> 3° Série</p>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table id="palestras-table">
+            <thead>
+                <tr>
+                    <th>Relatórios</th>   
+                    <th>Data</th>          
+                    <th style="width: 80px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+          
+            </tbody>
+        </table>
+       
+    
+     
+    </div>
+    <div id="upload-container">
+        <button class="upload-btn" onclick="document.getElementById('file-input').click()">Anexar Relatórios</button>
+        <input type="file" id="file-input" accept="application/pdf" style="display: none;">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const tableBody = document.querySelector("#palestras-table tbody");
+    const viewerContainer = document.createElement("div");
+    viewerContainer.style.display = "none";
+    viewerContainer.style.position = "fixed";
+    viewerContainer.style.top = "10%";
+    viewerContainer.style.left = "50%";
+    viewerContainer.style.transform = "translateX(-50%)";
+    viewerContainer.style.width = "45%";
+    viewerContainer.style.height = "85%";
+    viewerContainer.style.backgroundColor = "#f4f4f4";
+    viewerContainer.style.border = "1px solid #ddd";
+    viewerContainer.style.borderRadius = "10px";
+    viewerContainer.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
+    viewerContainer.style.zIndex = "1000";
+    viewerContainer.innerHTML = `
+        <button onclick="closeViewer()" id="close-button" style="position:absolute;top:10px;left:10px;background:red;color:white;border:none;padding:5px 10px;cursor:pointer;">Fechar</button>
+        <div id="docx-content" style="padding: 20px; color: black; overflow-y: auto; height: 90%;"></div>
+    `;
+    document.body.appendChild(viewerContainer);
+
+    window.closeViewer = function () {
+        viewerContainer.style.display = "none";
+    };
+
+    // Visualizar arquivos DOCX
+    function viewFile(fileUrl) {
+        const docxContent = document.getElementById("docx-content");
+
+        fetch(fileUrl)
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => {
+                return mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
+            })
+            .then(result => {
+                docxContent.innerHTML = result.value;
+                docxContent.style.display = "block";
+            })
+            .catch(error => {
+                console.error("Erro ao carregar o DOCX:", error);
+                alert("Erro ao visualizar o arquivo DOCX.");
+            });
+
+        viewerContainer.style.display = "block"; 
+    }
+
+    // Carregar arquivos salvos no LocalStorage
+    function loadFiles() {
+        const savedFiles = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+        savedFiles.forEach(file => addFileToTable(file.name, file.date, file.url));
+    }
+
+    // Adicionar arquivo à tabela
+    function addFileToTable(fileName, fileDate, fileUrl) {
+        const tableBody = document.querySelector('#palestras-table tbody');
+        const newRow = document.createElement('tr');
+        const nameCell = document.createElement('td');
+        const dateCell = document.createElement('td');
+        const actionCell = document.createElement('td');
+
+        const fileLink = document.createElement("a");
+        fileLink.href = "#";
+        fileLink.textContent = fileName;
+        fileLink.style.color = "white"; 
+        fileLink.style.textDecoration = "none"; 
+        fileLink.onclick = function () {
+            viewFile(fileUrl); 
+        };
+
+        nameCell.appendChild(fileLink);
+        dateCell.textContent = fileDate;
+
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remover';
+        removeButton.classList.add('remove-btn');
+        removeButton.onclick = function () {
+            tableBody.removeChild(newRow);
+            removeFileFromStorage(fileName); 
+        };
+
+        actionCell.appendChild(removeButton);
+        newRow.appendChild(nameCell);
+        newRow.appendChild(dateCell);
+        newRow.appendChild(actionCell);
+        tableBody.appendChild(newRow);
+    }
+
+    // Remover arquivo do LocalStorage
+    function removeFileFromStorage(fileName) {
+        let savedFiles = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+        savedFiles = savedFiles.filter(file => file.name !== fileName);
+        localStorage.setItem("uploadedFiles", JSON.stringify(savedFiles));
+    }
+
+    // Verificar se o arquivo já existe no localStorage
+    function isFileAlreadyUploaded(fileName) {
+        const savedFiles = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+        return savedFiles.some(file => file.name === fileName);
+    }
+
+    // Capturar upload de arquivo
+    document.getElementById("file-input").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const fileName = file.name;
+            const fileDate = new Date().toLocaleDateString();
+
+            // Verificar se o arquivo já está presente no LocalStorage
+            if (isFileAlreadyUploaded(fileName)) {
+                alert("Este arquivo já foi carregado anteriormente.");
+                event.target.value = ""; // Limpar o campo de entrada
+                return;
+            }
+
+            // Verificar se o arquivo é DOCX
+            if (!fileName.endsWith(".docx")) {
+                alert("Por favor, selecione um arquivo DOCX.");
+                event.target.value = ""; // Limpar o campo de entrada
+                return;
+            }
+
+            // Converter o arquivo em Base64 para armazenamento persistente
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                const fileUrl = reader.result;
+                addFileToTable(fileName, fileDate, fileUrl);
+
+                let savedFiles = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+                savedFiles.push({ name: fileName, date: fileDate, url: fileUrl });
+                localStorage.setItem("uploadedFiles", JSON.stringify(savedFiles));
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Carregar arquivos ao iniciar a página
+    loadFiles();
+    
+    // Adicionando animação ao botão fechar
+    const closeButton = document.getElementById("close-button");
+    closeButton.style.left= "89%";
+    closeButton.addEventListener("mouseover", function() {
+        closeButton.style.backgroundColor = "#ff6666"; // Cor mais clara ao passar o mouse
+        closeButton.style.transform = "scale(1.1)"; // Aumenta o botão levemente
+        closeButton.style.transition = "all 0.3s ease"; // Transição suave
+       
+    });
+   
+    closeButton.addEventListener("mouseout", function() {
+        closeButton.style.backgroundColor = "red"; // Volta à cor original
+        closeButton.style.transform = "scale(1)"; // Retorna ao tamanho original
+    });
+});
+
+
+
+
+
+    </script>
+
+    
+    
+    
+    
+    
+  
+    
+
+</body>
+</html>
